@@ -1,9 +1,7 @@
-import { ReactElement } from 'react';
-
-export interface ProductCardProps {
-    children?: ReactElement | ReactElement[]; 
-    product: Product;
-}
+import { Props as ProductCardProps} from '../components/ProductCard';
+import { Props as ProductImageProps} from '../components/ProductImage';
+import { Props as ProductTitleProps } from '../components/ProductTitle';
+import { Props as ProductButtonsProps } from '../components/ProductButtons';
 
 export interface Product {
     id: string;
@@ -19,23 +17,10 @@ export interface ProductContextProps {
     product: Product;
 }
 
-// Interfaces de los componentes hijos
-export interface ProductImageProps {
-    img?: string;
-}
-
-export interface ProductTitleProps {
-    title?: string;
-}
-
-export interface ProductButtonsProps {
-    counter: number;
-    increaseBy: (value: number) => void
-}
-
+// No desestructuramos las propiedades y por eso lo dejamos sin desestructurar como Props
 export interface ProductCardHOCProps {
     ({ children, product }: ProductCardProps) : JSX.Element,
-    Title: ({ title }: ProductTitleProps) => JSX.Element,
-    Image: ({ img }: { img?: string | undefined;}) => JSX.Element,
-    Buttons: () => JSX.Element
+    Title: (Props: ProductTitleProps) => JSX.Element,
+    Image: (Props: ProductImageProps) => JSX.Element,
+    Buttons: (Props: ProductButtonsProps) => JSX.Element
 }
