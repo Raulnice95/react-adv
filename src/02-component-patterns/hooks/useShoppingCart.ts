@@ -10,38 +10,22 @@ export const useShoppingCart = () => {
 
     const onProductCountChange = ({count, product }: {count: number, product: Product }) => {
         setShoppingCart(oldShoppingCart => {
-            // Forma 1: de esta manera no se mantiene el estado dentro del hook. Lo manejamos aqui
-            const productInCart: ProductInCart = oldShoppingCart[product.id] || { ...product, count: 0}
-
-            if ( Math.max( productInCart.count + count, 0) > 0 ) {
-                productInCart.count += count;
-                return {
-                    ...oldShoppingCart,
-                    [product.id]: productInCart
-                }
+            
+            // Para eliminar un registro de un objeto por desestructuracion y propiedades conmutadas
+            if (count === 0){
+                // desestructuramos el objeto para, por ejemplo, avisos de borrado (¿estas seguro que quieres eliminar este objeto?)
+                // devolvemos el resto del objeto como rest
+                const {[product.id]: toDelete, ...rest} = oldShoppingCart;
+                // Tambien se podria hacer de esta manera
+                // delete ({...oldShoppingCart})[product.id]
+                return rest
             }
 
-            // Borrar el producto
-            const {[product.id]: toDelete, ...rest} = oldShoppingCart;
-            return rest
-
-
-            // Forma simple de hacerlo
-            // Para eliminar un registro de un objeto por desestructuracion y propiedades conmutadas
-            // if (count === 0){
-            //     // desestructuramos el objeto para, por ejemplo, avisos de borrado (¿estas seguro que quieres eliminar este objeto?)
-            //     // devolvemos el resto del objeto como rest
-            //     const {[product.id]: toDelete, ...rest} = oldShoppingCart;
-            //     // Tambien se podria hacer de esta manera
-            //     // delete ({...oldShoppingCart})[product.id]
-            //     return rest
-            // }
-
-            // // Spread para no mutar directamente el counter
-            // return {
-            //     ...oldShoppingCart,
-            //     [product.id]: {...product, count}
-            // }
+            // Spread para no mutar directamente el counter
+            return {
+                ...oldShoppingCart,
+                [product.id]: {...product, count}
+            }
         })
     }
 
