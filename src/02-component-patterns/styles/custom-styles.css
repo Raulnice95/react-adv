@@ -20,3 +20,9 @@ background-color: rgb(56,56,56);
     color: white;
     border-color: white;
 }
+
+.shopping-cart{
+    position: fixed;
+    top: 0px;
+    right: 0px;
+}
