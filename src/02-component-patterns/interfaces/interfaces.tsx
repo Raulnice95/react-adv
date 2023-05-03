@@ -13,8 +13,9 @@ export interface Product {
 // Para controlar a que propiedades tienen acceso los hijos definimos una interfaz
 export interface ProductContextProps {
     counter: number;
-    increaseBy: (value: number) => void;
+    maxCount?: number;
     product: Product;
+    increaseBy: (value: number) => void;
 }
 
 // No desestructuramos las propiedades y por eso lo dejamos sin desestructurar como Props
@@ -32,4 +33,18 @@ export interface onChangeArgs {
 
 export interface ProductInCart extends Product {
     count: number
+}
+export interface InitialValues {
+    count?: number;
+    maxCount?: number;
+}
+
+export interface ProductCardHandlers {
+    count: number;
+    isMaxCountReached: boolean;
+    maxCount?: number;
+    product: Product;
+
+    increaseBy: (value: number) => void;
+    reset: () => void;
 }
