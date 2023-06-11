@@ -10,7 +10,7 @@ interface Props {
 
 export const MyTextInput = ({ label, ...props }: Props) => {
     // useField es un hook que nos permite extraer de las props del contexto
-    const [field, meta] = useField(props); // En la parte de field es donde vienbe el onChange, onBlur, etc.
+    const [field] = useField(props); // En la parte de field es donde vienbe el onChange, onBlur, etc.
 
     return (
         <>

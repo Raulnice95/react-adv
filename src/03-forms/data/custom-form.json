@@ -1,0 +1,70 @@
+[
+    {
+        "type": "input",
+        "name": "firstName",
+        "placeholder": "Raul",
+        "label": "First Name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            }
+        ]
+    },
+    {
+        "type": "input",
+        "name": "lastName",
+        "placeholder": "Nieva",
+        "label": "Last Name",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "minLength",
+                "value": 5
+            }
+        ]
+    },
+    {
+        "type": "email",
+        "name": "email",
+        "placeholder": "raul_nice@hotmail.com",
+        "label": "Email",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            },
+            {
+                "type": "email"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "name": "favoriteGame",
+        "label": "Favourite Game",
+        "value": "",
+        "validations": [
+            {
+                "type": "required"
+            }
+        ],
+        "options": [
+            {
+                "id" : 1, 
+                "label": "Fifa23" 
+            },
+            {
+                "id" : 2, 
+                "label": "Call Of Duty"
+            },
+            {
+                "id" : 3, 
+                "label": "Fall Guys"
+            }
+        ] 
+    }
+]
